@@ -27,12 +27,12 @@ namespace EmployeeRegistrationAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-            services.AddCors();
+            services.AddControllers();            
 
             var config2 = Configuration.GetConnectionString("DevConnection");
 
             services.AddDbContext<EmployeeDbContext>(options => options.UseSqlServer(config2));
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
