@@ -28,6 +28,7 @@ namespace EmployeeRegistrationAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors();
 
             var config2 = Configuration.GetConnectionString("DevConnection");
 
@@ -37,6 +38,10 @@ namespace EmployeeRegistrationAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors(options => options.WithOrigins("http://localhost:3000")
+                .AllowAnyMethod()
+                .AllowAnyOrigin());
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
