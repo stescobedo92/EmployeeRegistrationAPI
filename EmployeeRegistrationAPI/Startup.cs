@@ -29,8 +29,9 @@ namespace EmployeeRegistrationAPI
         {
             services.AddControllers();
 
-            services.AddDbContext<EmployeeDbContext>(options=>
-            options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+            var config2 = Configuration.GetConnectionString("DevConnection");
+
+            services.AddDbContext<EmployeeDbContext>(options => options.UseSqlServer(config2));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
